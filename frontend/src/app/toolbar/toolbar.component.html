@@ -1,0 +1,31 @@
+<mat-toolbar color="primary" >
+  <button mat-raised-button color="accent" (click)="sidenav.toggle()"> Menu </button>
+  <div class="welcome-text">
+    <span>Tourist App</span>
+  </div>
+  <span class="nav-space"></span>
+  <button mat-raised-button color="accent"> Sign in </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav color="accent" #sidenav mode="side" opened="false" class="sidenav">
+    <mat-list>
+      <mat-list-item>
+        <div class="menu-item-container">
+          <button mat-raised-button color="primary">Item 1</button>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="menu-item-container">
+          <button mat-raised-button color="primary">Item 1</button>
+        </div>
+      </mat-list-item>
+      <mat-list-item>
+        <div class="menu-item-container">
+          <button mat-raised-button color="primary">Item 1</button>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+</mat-sidenav-container>
+
