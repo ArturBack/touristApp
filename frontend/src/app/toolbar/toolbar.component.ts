@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {MatIconRegistry} from '@angular/material';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,8 +9,19 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  menuIconName = 'hamburger';
+  menuIconPath = 'assets/images/hamburger.svg';
+
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon(this.menuIconName, sanitizer.bypassSecurityTrustResourceUrl(this.menuIconPath));
+  }
+
   ngOnInit() {
   }
 
+  onShowMyTripsClick() {
+  }
+
+  onAddNewTripClick() {
+  }
 }

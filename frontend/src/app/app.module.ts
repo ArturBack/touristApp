@@ -22,6 +22,9 @@ import {EmailInputComponent} from './signin-dialog/components/email-input/email-
 import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './/app-routing.module';
 import { ShowMyTripComponent } from './show-my-trip/show-my-trip.component';
+import {HttpClientModule} from '@angular/common/http';
+import { AddNewTripComponent } from './add-new-trip/add-new-trip.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import { ShowMyTripComponent } from './show-my-trip/show-my-trip.component';
     SigninDialogComponent,
     PasswordInputComponent,
     EmailInputComponent,
-    ShowMyTripComponent
+    ShowMyTripComponent,
+    AddNewTripComponent,
+    HomeComponent
+
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,8 @@ import { ShowMyTripComponent } from './show-my-trip/show-my-trip.component';
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   entryComponents: [
     SigninDialogComponent
