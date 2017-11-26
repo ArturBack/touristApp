@@ -1,12 +1,11 @@
+<mat-sidenav-container fullscreen>
 <mat-toolbar color="primary" >
   <button mat-raised-button color="accent" (click)="sidenav.toggle()"> Menu </button>
   <span class="nav-space"></span>
   <app-signin></app-signin>
   <app-signup></app-signup>
 </mat-toolbar>
-
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav color="accent" #sidenav mode="side" opened="false">
+  <mat-sidenav #sidenav opened="false" class="sidenav">
     <mat-list>
       <mat-list-item>
         <div class="menu-item-container">
@@ -16,8 +15,11 @@
       <mat-list-item class="menu-item-container">
           <button mat-raised-button color="primary" class="sidenav-button">Add new trip</button>
       </mat-list-item>
-
     </mat-list>
   </mat-sidenav>
+
+  <router-outlet></router-outlet>
+
 </mat-sidenav-container>
+
 

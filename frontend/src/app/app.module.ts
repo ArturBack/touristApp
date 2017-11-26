@@ -21,6 +21,7 @@ import {PasswordInputComponent} from './signin-dialog/components/password-input/
 import {EmailInputComponent} from './signin-dialog/components/email-input/email-input.component';
 import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './/app-routing.module';
+import { ShowMyTripComponent } from './show-my-trip/show-my-trip.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { AppRoutingModule } from './/app-routing.module';
     FooterComponent,
     SigninDialogComponent,
     PasswordInputComponent,
-    EmailInputComponent
+    EmailInputComponent,
+    ShowMyTripComponent
   ],
   imports: [
     BrowserModule,
