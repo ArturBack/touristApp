@@ -13,13 +13,14 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 
 import {AppComponent} from './app.component';
 import {ToolbarComponent} from './toolbar/toolbar.component';
-import {SigninComponent} from './signin/signin.component';
-import {SignupComponent} from './signup/signup.component';
+import {SigninComponent} from './toolbar/components/signin/signin.component';
+import {SignupComponent} from './toolbar/components/signup/signup.component';
 import {FooterComponent} from './footer/footer.component';
 import {SigninDialogComponent} from './signin-dialog/signin-dialog.component';
-import {PasswordInputComponent} from './password-input/password-input.component';
-import {EmailInputComponent} from './email-input/email-input.component';
+import {PasswordInputComponent} from './signin-dialog/components/password-input/password-input.component';
+import {EmailInputComponent} from './signin-dialog/components/email-input/email-input.component';
 import {MatIconModule} from '@angular/material/icon';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    AppRoutingModule
   ],
   entryComponents: [
     SigninDialogComponent

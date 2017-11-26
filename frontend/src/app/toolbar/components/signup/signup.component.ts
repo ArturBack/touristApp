@@ -1,12 +1,11 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component} from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
-import {SigninDialogComponent} from '../signin-dialog/signin-dialog.component';
+import {SigninDialogComponent} from '../../../signin-dialog/signin-dialog.component';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css'],
-  encapsulation: ViewEncapsulation.None
 })
 export class SignupComponent  {
 

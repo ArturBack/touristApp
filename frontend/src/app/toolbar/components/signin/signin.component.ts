@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {SigninDialogComponent} from '../signin-dialog/signin-dialog.component';
 import {MatDialog} from '@angular/material';
+import {SigninDialogComponent} from '../../../signin-dialog/signin-dialog.component';
 
 @Component({
   selector: 'app-signin',
