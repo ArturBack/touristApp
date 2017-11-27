@@ -21,10 +21,12 @@ import {PasswordInputComponent} from './signin-dialog/components/password-input/
 import {EmailInputComponent} from './signin-dialog/components/email-input/email-input.component';
 import {MatIconModule} from '@angular/material/icon';
 import { AppRoutingModule } from './/app-routing.module';
-import { ShowMyTripComponent } from './show-my-trip/show-my-trip.component';
+import { ShowMyTripsComponent } from './show-my-trip/show-my-trip.component';
 import {HttpClientModule} from '@angular/common/http';
 import { AddNewTripComponent } from './add-new-trip/add-new-trip.component';
 import { HomeComponent } from './home/home.component';
+import { TripComponent } from './show-my-trip/components/trip/trip.component';
+import {TripService} from "./services/trip.service";
 
 
 @NgModule({
@@ -37,9 +39,10 @@ import { HomeComponent } from './home/home.component';
     SigninDialogComponent,
     PasswordInputComponent,
     EmailInputComponent,
-    ShowMyTripComponent,
+    ShowMyTripsComponent,
     AddNewTripComponent,
-    HomeComponent
+    HomeComponent,
+    TripComponent
 
   ],
   imports: [
@@ -60,7 +63,7 @@ import { HomeComponent } from './home/home.component';
   entryComponents: [
     SigninDialogComponent
   ],
-  providers: [],
+  providers: [TripService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

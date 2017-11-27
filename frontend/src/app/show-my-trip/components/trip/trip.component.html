@@ -1,0 +1,8 @@
+<div class=" trip-container list-group-item list-group-item-action flex-column align-items-start">
+  <div class="d-flex w-100 justify-content-between first-row">
+    <h5 class="mb-1">{{trip.name}}</h5>
+    <button mat-raised-button color="warn" (click)="openDetails()"> Show details </button>
+  </div>
+  <p class="mb-1">{{trip.description}}</p>
+  <small class="text-muted">{{trip.dateFrom}} - {{trip.dateTo}}</small>
+</div>

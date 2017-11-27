@@ -1,3 +1,10 @@
-<p>
-show-my-trip works!
-</p>
+<div class="list-group">
+  <div class="list-group-item list-group-item-action flex-column align-items-start trip-head">
+    <div class="d-flex w-100 justify-content-between ">
+      <h5 class="mb-1 title">My Trips</h5>
+    </div>
+  </div>
+  <div *ngFor='let trip of trips'>
+    <app-trip [trip]=trip></app-trip>
+  </div>
+</div>

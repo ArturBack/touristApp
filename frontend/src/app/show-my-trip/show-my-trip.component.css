@@ -1,0 +1,15 @@
+.trip-head {
+  margin-top: 5px;
+  background-color: #F5F5F5;
+  border: medium;
+  height: 85px;
+  border-radius: 8%;
+  margin-bottom: 10px;
+}
+
+.title {
+  color: black;
+  font-size: 300%;
+  font-family: "Arial";
+}
+
