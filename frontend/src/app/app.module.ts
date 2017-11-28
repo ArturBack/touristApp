@@ -9,6 +9,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { AgmCoreModule } from '@agm/core';
 
 
 import {AppComponent} from './app.component';
@@ -26,7 +27,10 @@ import {HttpClientModule} from '@angular/common/http';
 import { AddNewTripComponent } from './add-new-trip/add-new-trip.component';
 import { HomeComponent } from './home/home.component';
 import { TripComponent } from './show-my-trip/components/trip/trip.component';
-import {TripService} from "./services/trip.service";
+import {TripService} from './services/trip.service';
+import { TripDetailsComponent } from './trip-details/trip-details.component';
+import { TripDetailsCommentComponent } from './trip-details/components/trip-details-comment/trip-details-comment.component';
+import { GoogleMapComponent } from './trip-details/components/trip-details-comment/components/google-map/google-map.component';
 
 
 @NgModule({
@@ -42,7 +46,10 @@ import {TripService} from "./services/trip.service";
     ShowMyTripsComponent,
     AddNewTripComponent,
     HomeComponent,
-    TripComponent
+    TripComponent,
+    TripDetailsComponent,
+    TripDetailsCommentComponent,
+    GoogleMapComponent
 
   ],
   imports: [
@@ -58,7 +65,10 @@ import {TripService} from "./services/trip.service";
     MatFormFieldModule,
     MatIconModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAOvdB3YtfXI-1GkU5i4q_mnjZYOlE8_YA'
+    })
   ],
   entryComponents: [
     SigninDialogComponent

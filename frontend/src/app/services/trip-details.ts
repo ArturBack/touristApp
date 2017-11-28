@@ -4,4 +4,6 @@ export class TripDetails {
   description: String;
   dateFrom: String;
   dateTo: String;
+  latitude = 0;
+  longitude = 0;
 }

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Trip} from '../../../services/trip';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-trip',
@@ -9,13 +10,13 @@ import {Trip} from '../../../services/trip';
 export class TripComponent implements OnInit {
   @Input() trip: Trip;
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
   }
 
   openDetails() {
-
+    this.router.navigate(['/tripDetails/' + this.trip.id], {queryParams: {tripName: this.trip.name}});
   }
 }

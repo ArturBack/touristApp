@@ -1,0 +1,13 @@
+<div class=" trip-container list-group-item list-group-item-action flex-column align-items-start">
+  <div class="d-flex w-100 justify-content-between first-row">
+    <h5 class="mb-1">{{tripDetail.name}}</h5>
+    <button mat-raised-button color="warn" (click)="showOnMap()"> {{mapButtonName}}</button>
+  </div>
+
+  <p class="mb-1 tripdetail-description">{{tripDetail.description}}</p>
+  <small class="text-muted tripdetail-description">{{tripDetail.dateFrom}} - {{tripDetail.dateTo}}</small>
+
+  <app-google-map *ngIf="coordinateSet" [latitude]=tripDetail.latitude
+                  [longitude]=tripDetail.longitude></app-google-map>
+
+</div>
