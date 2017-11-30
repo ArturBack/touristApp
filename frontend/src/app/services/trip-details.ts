@@ -1,4 +1,4 @@
-export class TripDetails {
+export class TripDetail {
   id: number;
   name: String;
   description: String;

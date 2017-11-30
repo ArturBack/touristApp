@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {TripDetails} from '../services/trip-details';
+import {ActivatedRoute, Router} from '@angular/router';
+import {TripDetail} from '../services/trip-details';
 import {TripService} from '../services/trip.service';
 
 
@@ -11,10 +11,11 @@ import {TripService} from '../services/trip.service';
 })
 export class TripDetailsComponent implements OnInit {
 
+  tripId: number;
   tripName: String;
-  tripDetails: TripDetails[];
+  tripDetails: TripDetail[];
 
-  constructor(private route: ActivatedRoute, private tripService: TripService) {
+  constructor(private route: ActivatedRoute, private router: Router, private tripService: TripService) {
   }
 
   ngOnInit() {
@@ -22,11 +23,11 @@ export class TripDetailsComponent implements OnInit {
       .subscribe(params => {
         this.tripName = params.tripName;
       });
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.tripDetails = this.tripService.getDetailForTrip(id);
+    this.tripId = +this.route.snapshot.paramMap.get('id');
+    this.tripDetails = this.tripService.getDetailForTrip(this.tripId);
   }
 
   addNewPoint() {
-
+    this.router.navigate(['/addTripDetail/' + this.tripId]);
   }
 }

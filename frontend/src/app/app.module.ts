@@ -31,6 +31,7 @@ import {TripService} from './services/trip.service';
 import { TripDetailsComponent } from './trip-details/trip-details.component';
 import { TripDetailsCommentComponent } from './trip-details/components/trip-details-comment/trip-details-comment.component';
 import { GoogleMapComponent } from './trip-details/components/trip-details-comment/components/google-map/google-map.component';
+import { AddNewCommentComponent } from './add-new-comment/add-new-comment.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { GoogleMapComponent } from './trip-details/components/trip-details-comme
     TripComponent,
     TripDetailsComponent,
     TripDetailsCommentComponent,
-    GoogleMapComponent
+    GoogleMapComponent,
+    AddNewCommentComponent
 
   ],
   imports: [

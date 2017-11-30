@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Trip} from './trip';
-import {TripDetails} from "./trip-details";
+import {TripDetail} from './trip-details';
 
 @Injectable()
 export class TripService {
@@ -34,7 +34,7 @@ export class TripService {
     ];
   }
 
-  getDetailForTrip(id: number): TripDetails[] {
+  getDetailForTrip(id: number): TripDetail[] {
     return [
       {
         id: 1,
@@ -57,5 +57,14 @@ export class TripService {
 
     ];
   }
+
+  addNewTrip(newTrip: Trip) {
+
+  }
+
+  addNewTripDetail(tripId: number, newTripDetail: TripDetail) {
+
+  }
+
 
 }

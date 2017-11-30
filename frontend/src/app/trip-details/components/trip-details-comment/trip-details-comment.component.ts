@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TripDetails} from '../../../services/trip-details';
+import {TripDetail} from '../../../services/trip-details';
 
 @Component({
   selector: 'app-trip-details-comment',
@@ -7,7 +7,7 @@ import {TripDetails} from '../../../services/trip-details';
   styleUrls: ['./trip-details-comment.component.css'],
 })
 export class TripDetailsCommentComponent implements OnInit {
-  @Input() tripDetail: TripDetails;
+  @Input() tripDetail: TripDetail;
   coordinateSet = false;
   mapButtonName = 'Show on map';
 

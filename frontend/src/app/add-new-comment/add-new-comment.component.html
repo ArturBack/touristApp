@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="col-md-5" >
+  <div class="col-md-5">
     <div class="form-area">
       <form role="form">
         <br style="clear:both">
-        <h3 style="margin-bottom: 25px; text-align: center;">New trip</h3>
+        <h3 style="margin-bottom: 25px; text-align: center;">New trip detail</h3>
         <div class="form-group">
           <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
         </div>
@@ -18,8 +18,16 @@
         <div class="form-group">
           <textarea class="form-control" type="textarea" id="message" placeholder="Description" rows="7"></textarea>
         </div>
+        <div class="form-group">
+          <button type="button" id="geoBtn" name="submit" class="btn btn-danger space" (click)="onGeoLocationClick()">Get
+            location
+          </button>
+          <input type="text" class="form-control space" id="latitude" name="name" placeholder="Latitude" disabled>
+          <input type="text" class="form-control space" id="longitude" name="name" placeholder="Longitude" disabled>
+        </div>
 
-        <button type="button" id="submit" name="submit" class="btn btn-danger" (click)="onAddNewTrip()">Add trip</button>
+        <button type="button" id="submit" name="submit" class="btn btn-danger" (click)="onAddDetail()">Add detail
+        </button>
 
       </form>
     </div>

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {TripService} from '../services/trip.service';
 
 @Component({
   selector: 'app-add-new-trip',
@@ -6,14 +7,13 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./add-new-trip.component.css'],
 })
 export class AddNewTripComponent implements OnInit {
-  title = 'My first AGM project';
-  lat = 51.678418;
-  lng = 7.809007;
-
-  constructor() {
+  constructor(private tripService: TripService) {
   }
 
   ngOnInit() {
   }
 
+  onAddNewTrip() {
+    this.tripService.addNewTrip(null);
+  }
 }
