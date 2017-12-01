@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {TripDetail} from '../services/trip-details';
+import {TripDetail} from '../services/model/trip-details';
 import {TripService} from '../services/trip.service';
 
 

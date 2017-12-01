@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Trip} from '../../../services/trip';
+import {Trip} from '../../../services/model/trip';
 import {Router} from '@angular/router';
 
 @Component({

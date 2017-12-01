@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TripService} from '../services/trip.service';
-import {Trip} from '../services/trip';
+import {Trip} from '../services/model/trip';
 
 @Component({
   selector: 'app-show-my-trip',

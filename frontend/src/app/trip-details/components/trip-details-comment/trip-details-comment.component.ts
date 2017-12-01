@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TripDetail} from '../../../services/trip-details';
+import {TripDetail} from '../../../services/model/trip-details';
 
 @Component({
   selector: 'app-trip-details-comment',
