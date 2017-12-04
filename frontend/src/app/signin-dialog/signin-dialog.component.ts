@@ -1,5 +1,6 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {UserService} from '../services/user.service';
 
 @Component({
   selector: 'app-signin-dialog',
@@ -8,8 +9,29 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 })
 export class SigninDialogComponent {
 
-  constructor(
-    public dialogRef: MatDialogRef<SigninDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+  @ViewChild('email') emailView;
+  @ViewChild('password') passwordView;
+
+  constructor(private userService: UserService,
+              private dialogRef: MatDialogRef<SigninDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any) {
   }
- }
+
+  private onCancel() {
+    this.dialogRef.close();
+  }
+
+  private isSignInDialog(): boolean {
+    return this.data.title === 'Sign in';
+  }
+
+  private onSignIn() {
+    console.log(this.emailView.email + ' ' + this.passwordView.password);
+
+    if (this.isSignInDialog()) {
+      this.userService.logIn(this.emailView.email, this.passwordView.password);
+    } else {
+      this.userService.register(this.emailView.email, this.passwordView.password);
+    }
+  }
+}

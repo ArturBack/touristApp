@@ -1,9 +1,9 @@
 <h1 mat-dialog-title>{{data.title}}</h1>
 <div mat-dialog-content>
-  <app-email-input> </app-email-input>
-  <app-password-input></app-password-input>
+  <app-email-input #email> </app-email-input>
+  <app-password-input #password></app-password-input>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="warn" tabindex="2">Cancel</button>
-  <button mat-raised-button color="warn" tabindex="-1">{{data.title}}</button>
+  <button mat-raised-button color="warn" tabindex="2" (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="warn" tabindex="-1" (click)="onSignIn()">{{data.title}}</button>
 </div>

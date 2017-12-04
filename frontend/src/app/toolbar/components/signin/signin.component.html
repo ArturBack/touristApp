@@ -1,2 +1,2 @@
-<button mat-raised-button color="warn" (click)="openDialog()"> Sign in </button>
+<button *ngIf="!isLoggedIn()" mat-raised-button color="warn" (click)="openDialog()"> {{title}}</button>
 <br>

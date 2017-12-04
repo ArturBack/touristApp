@@ -14,7 +14,6 @@ export class Trip {
     this._dateTo = dateTo;
   }
 
-
   get id(): number {
     return this._id;
   }

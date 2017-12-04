@@ -32,6 +32,11 @@ import { TripDetailsComponent } from './trip-details/trip-details.component';
 import { TripDetailsCommentComponent } from './trip-details/components/trip-details-comment/trip-details-comment.component';
 import { GoogleMapComponent } from './trip-details/components/trip-details-comment/components/google-map/google-map.component';
 import { AddNewCommentComponent } from './add-new-comment/add-new-comment.component';
+import {UserService} from './services/user.service';
+import {StorageServiceModule} from 'angular-webstorage-service';
+import {Ng2Webstorage} from 'ngx-webstorage';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -55,6 +60,7 @@ import { AddNewCommentComponent } from './add-new-comment/add-new-comment.compon
 
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     NgbModule.forRoot(),
@@ -68,6 +74,8 @@ import { AddNewCommentComponent } from './add-new-comment/add-new-comment.compon
     MatIconModule,
     AppRoutingModule,
     HttpClientModule,
+    StorageServiceModule,
+    Ng2Webstorage,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAOvdB3YtfXI-1GkU5i4q_mnjZYOlE8_YA'
     })
@@ -75,7 +83,7 @@ import { AddNewCommentComponent } from './add-new-comment/add-new-comment.compon
   entryComponents: [
     SigninDialogComponent
   ],
-  providers: [TripService],
+  providers: [TripService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

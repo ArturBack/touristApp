@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Trip} from './model/trip';
 import {TripDetail} from './model/trip-details';
+import {UserService} from './user.service';
 
 @Injectable()
 export class TripService {
 
-  constructor() {
+  constructor(private userService: UserService) {
   }
 
   getTrips(): Trip[] {
