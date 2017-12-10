@@ -9,13 +9,16 @@ import {Trip} from '../services/model/trip';
 })
 export class ShowMyTripsComponent implements OnInit {
 
-  trips: Trip[]
+  private trips: Trip[];
 
   constructor(private tripService: TripService) {
-    this.trips = tripService.getTrips();
   }
 
   ngOnInit() {
+    this.tripService.getTrips()
+      .subscribe(trips => {
+        console.log(trips);
+        this.trips = trips;
+      });
   }
-
 }

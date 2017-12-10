@@ -1,12 +1,12 @@
 export class Trip {
   private _id: number;
-  private _name: String;
-  private _description: String;
-  private _dateFrom: String;
-  private _dateTo: String;
+  private _name: string;
+  private _description: string;
+  private _dateFrom: string;
+  private _dateTo: string;
 
 
-  constructor(id: number, name: String, description: String, dateFrom: String, dateTo: String) {
+  constructor(id: number, name: string, description: string, dateFrom: string, dateTo: string) {
     this._id = id;
     this._name = name;
     this._description = description;
@@ -18,19 +18,19 @@ export class Trip {
     return this._id;
   }
 
-  get name(): String {
+  get name(): string {
     return this._name;
   }
 
-  get description(): String {
+  get description(): string {
     return this._description;
   }
 
-  get dateFrom(): String {
+  get dateFrom(): string {
     return this._dateFrom;
   }
 
-  get dateTo(): String {
+  get dateTo(): string {
     return this._dateTo;
   }
 }

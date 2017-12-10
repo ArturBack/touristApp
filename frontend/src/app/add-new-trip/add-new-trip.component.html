@@ -22,7 +22,7 @@
                     placeholder="Description" rows="7"></textarea>
         </div>
 
-        <button type="button" id="submit" name="submit" class="btn btn-danger" (click)="onAddNewTrip()">Add trip
+        <button [disabled] ="!isAddEnabled()" type="button" id="submit" name="submit" class="btn btn-danger" (click)="onAddNewTrip()">Add trip
         </button>
 
       </form>

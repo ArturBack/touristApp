@@ -10,8 +10,8 @@ import {Router} from '@angular/router';
 })
 export class ToolbarComponent implements OnInit {
 
-  menuIconName = 'hamburger';
-  menuIconPath = 'assets/images/hamburger.svg';
+  private menuIconName = 'hamburger';
+  private menuIconPath = 'assets/images/hamburger.svg';
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router) {
     iconRegistry.addSvgIcon(this.menuIconName, sanitizer.bypassSecurityTrustResourceUrl(this.menuIconPath));

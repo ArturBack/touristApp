@@ -20,6 +20,9 @@ public class User {
 
     private Set<Trip> trips;
 
+    public User() {
+    }
+
     public User(String login, String password) {
         this.login = login;
         this.password = password;

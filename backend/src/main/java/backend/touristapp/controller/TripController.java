@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import static backend.touristapp.constants.ResponseConstants.FAILED_RESPONSE;
@@ -35,20 +37,27 @@ public class TripController {
     @RequestMapping(value = "/getUserTrips", method = RequestMethod.GET)
     @ResponseBody
     public Set<Trip> getUserTrips(@RequestParam(value = "userId") long userId) {
-        User user = userRepository.findOne(userId);
+        String tempLogin = "artur.waliczek@gmail.com";
+        Optional<User> userOpt = userRepository.findByLogin(tempLogin);
+        User user = userOpt.orElseGet(() -> userRepository.save(new User(tempLogin, "haslo")));
+
         if (user != null) {
-            return user.getTrips();
+            Set<Trip> trips = user.getTrips();
+            if (trips != null) {
+                return trips;
+            }
+            return Collections.emptySet();
         }
         return Collections.emptySet();
     }
 
     @RequestMapping(value = "/addTrip", method = RequestMethod.GET)
     @ResponseBody
-    public String addNewTrip(@RequestParam(value = "userId") long userId,
-                             @RequestParam(value = "name") String name,
-                             @RequestParam(value = "description", required = false, defaultValue = "") String description,
-                             @RequestParam(value = "dateFrom", required = false, defaultValue = "") String dateFrom,
-                             @RequestParam(value = "dateTo", required = false, defaultValue = "") String dateTo) {
+    public Map<String, String> addNewTrip(@RequestParam(value = "userId") long userId,
+                          @RequestParam(value = "name") String name,
+                          @RequestParam(value = "description", required = false, defaultValue = "") String description,
+                          @RequestParam(value = "dateFrom", required = false, defaultValue = "") String dateFrom,
+                          @RequestParam(value = "dateTo", required = false, defaultValue = "") String dateTo) {
         User user = userRepository.findOne(userId);
         if (user == null) {
             return FAILED_RESPONSE;

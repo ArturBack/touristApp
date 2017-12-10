@@ -8,8 +8,9 @@ import {TripDetail} from '../../../services/model/trip-details';
 })
 export class TripDetailsCommentComponent implements OnInit {
   @Input() tripDetail: TripDetail;
-  coordinateSet = false;
-  mapButtonName = 'Show on map';
+
+  private coordinateSet = false;
+  private mapButtonName = 'Show on map';
 
   constructor() {
   }

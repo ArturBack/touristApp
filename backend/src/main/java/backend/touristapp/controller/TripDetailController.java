@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.Collections;
+import java.util.Map;
 import java.util.Set;
 
 import static backend.touristapp.constants.ResponseConstants.FAILED_RESPONSE;
@@ -43,13 +44,13 @@ public class TripDetailController {
 
     @RequestMapping(value = "/addTripDetail", method = RequestMethod.GET)
     @ResponseBody
-    public String addNewTrip(@RequestParam(value = "tripId") long tripId,
-                             @RequestParam(value = "name") String name,
-                             @RequestParam(value = "description", required = false, defaultValue = "") String description,
-                             @RequestParam(value = "dateFrom", required = false, defaultValue = "") String dateFrom,
-                             @RequestParam(value = "dateTo", required = false, defaultValue = "") String dateTo,
-                             @RequestParam(value = "latitude", required = false) Double latitude,
-                             @RequestParam(value = "longitude", required = false) Double longitude) {
+    public Map<String, String> addNewTrip(@RequestParam(value = "tripId") long tripId,
+                                          @RequestParam(value = "name") String name,
+                                          @RequestParam(value = "description", required = false, defaultValue = "") String description,
+                                          @RequestParam(value = "dateFrom", required = false, defaultValue = "") String dateFrom,
+                                          @RequestParam(value = "dateTo", required = false, defaultValue = "") String dateTo,
+                                          @RequestParam(value = "latitude", required = false) Double latitude,
+                                          @RequestParam(value = "longitude", required = false) Double longitude) {
 
         Trip trip = tripRepository.findOne(tripId);
         if (trip == null) {

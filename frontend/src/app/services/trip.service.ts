@@ -2,38 +2,59 @@ import {Injectable} from '@angular/core';
 import {Trip} from './model/trip';
 import {TripDetail} from './model/trip-details';
 import {UserService} from './user.service';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {Token} from './model/token';
 
 @Injectable()
 export class TripService {
 
-  constructor(private userService: UserService) {
+
+  constructor(private userService: UserService, private http: HttpClient) {
   }
 
-  getTrips(): Trip[] {
-    return [
-      new Trip(1, 'Włochy', 'Nie ma na świecie miasta dorównującego Rzymowi bogactwem artystycznym, historycznym, czy architektonicznym.',
-        new Date().toLocaleDateString(), new Date().toLocaleDateString()),
-      new Trip(2, 'Hiszpania', 'Nie ma na świecie miasta dorównującego Rzymowi bogactwem artystycznym, historycznym, czy architektonicznym.',
-        new Date().toLocaleDateString(), new Date().toLocaleDateString())
-    ];
+  getTrips(): Observable<Trip[]> {
+    const token: Token = this.userService.getUserToken();
+    let params = new HttpParams();
+    params = params.set('userId', '1');
+
+    const url = 'http://localhost:8080/getUserTrips';
+    return this.http.get<Trip[]>(url, {params: params});
   }
 
-  getDetailForTrip(id: number): TripDetail[] {
-    return [
-      new TripDetail(1, 'Wenecja', 'Nie ma na świecie miasta dorównującego Rzymowi bogactwem artystycznym, historycznym, czy architektonicznym.',
-        new Date().toLocaleDateString(), new Date().toLocaleDateString(), 0, 12.4759007),
-      new TripDetail(1, 'Rzym', 'Nie ma na świecie miasta dorównującego Rzymowi bogactwem artystycznym, historycznym, czy architektonicznym.',
-        new Date().toLocaleDateString(), new Date().toLocaleDateString(), 45.4250084, 12.4759007)
-    ];
+  getDetailForTrip(id: number): Observable<TripDetail[]> {
+    let params = new HttpParams();
+    params = params.set('tripID', id.toString());
+
+    const url = 'http://localhost:8080/getTripDetails';
+    return this.http.get<TripDetail[]>(url, {params: params});
   }
 
-  addNewTrip(newTrip: Trip) {
+  addNewTrip(newTrip: Trip): Observable<string> {
+    const token: Token = this.userService.getUserToken();
 
+    let params = new HttpParams();
+    params = params.set('userId', '1');
+    params = params.set('name', newTrip.name);
+    params = params.set('description', newTrip.description);
+    params = params.set('dateFrom', newTrip.dateFrom);
+    params = params.set('dateTo', newTrip.dateTo);
+
+    const url = 'http://localhost:8080/addTrip';
+    return this.http.get<string>(url, {params: params});
   }
 
-  addNewTripDetail(tripId: number, newTripDetail: TripDetail) {
+  addNewTripDetail(tripId: number, newTripDetail: TripDetail): Observable<string> {
+    let params = new HttpParams();
+    params = params.set('tripId', tripId.toString());
+    params = params.set('name', newTripDetail.name);
+    params = params.set('description', newTripDetail.description);
+    params = params.set('dateFrom', newTripDetail.dateFrom);
+    params = params.set('dateTo', newTripDetail.dateTo);
+    params = params.set('latitude', newTripDetail.latitude.toString());
+    params = params.set('longitude', newTripDetail.longitude.toString());
 
+    const url = 'http://localhost:8080/addTripDetail';
+    return this.http.get<string>(url, {params: params});
   }
-
-
 }

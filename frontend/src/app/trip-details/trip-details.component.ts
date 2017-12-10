@@ -11,9 +11,9 @@ import {TripService} from '../services/trip.service';
 })
 export class TripDetailsComponent implements OnInit {
 
-  tripId: number;
-  tripName: String;
-  tripDetails: TripDetail[];
+  private tripId: number;
+  private tripName: String;
+  private tripDetails: TripDetail[];
 
   constructor(private route: ActivatedRoute, private router: Router, private tripService: TripService) {
   }
@@ -24,10 +24,18 @@ export class TripDetailsComponent implements OnInit {
         this.tripName = params.tripName;
       });
     this.tripId = +this.route.snapshot.paramMap.get('id');
-    this.tripDetails = this.tripService.getDetailForTrip(this.tripId);
+    this.getTripDetails(this.tripId);
+  }
+
+  getTripDetails(tripId: number) {
+    this.tripService.getDetailForTrip(tripId)
+      .subscribe(tripDetails => {
+        console.log(tripDetails);
+        this.tripDetails = tripDetails;
+      });
   }
 
   addNewPoint() {
-    this.router.navigate(['/addTripDetail/' + this.tripId]);
+    this.router.navigate(['/addTripDetail/' + this.tripId], {queryParams: {tripName: this.tripName}});
   }
 }

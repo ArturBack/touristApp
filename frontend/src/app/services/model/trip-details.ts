@@ -1,14 +1,14 @@
 export class TripDetail {
   private _id: number;
-  private _name: String;
-  private _description: String;
-  private _dateFrom: String;
-  private _dateTo: String;
+  private _name: string;
+  private _description: string;
+  private _dateFrom: string;
+  private _dateTo: string;
   private _latitude = 0;
   private _longitude = 0;
 
 
-  constructor(id: number, name: String, description: String, dateFrom: String, dateTo: String, latitude: number, longitude: number) {
+  constructor(id: number, name: string, description: string, dateFrom: string, dateTo: string, latitude: number, longitude: number) {
     this._id = id;
     this._name = name;
     this._description = description;
@@ -23,19 +23,19 @@ export class TripDetail {
     return this._id;
   }
 
-  get name(): String {
+  get name(): string {
     return this._name;
   }
 
-  get description(): String {
+  get description(): string {
     return this._description;
   }
 
-  get dateFrom(): String {
+  get dateFrom(): string {
     return this._dateFrom;
   }
 
-  get dateTo(): String {
+  get dateTo(): string {
     return this._dateTo;
   }
 

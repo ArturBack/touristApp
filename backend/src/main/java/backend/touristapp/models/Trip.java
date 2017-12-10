@@ -33,6 +33,9 @@ public class Trip {
 
     private Set<TripDetail> tripDetails;
 
+    public Trip() {
+    }
+
     public Trip(String name, String description, String dateFrom, String dateTo, User user) {
         this.name = name;
         this.description = description;
