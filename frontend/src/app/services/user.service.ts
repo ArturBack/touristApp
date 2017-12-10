@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {LocalStorageService} from 'ngx-webstorage';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Token} from './model/token';
 
 
