@@ -37,6 +37,9 @@ public class TripDetail {
     @JsonBackReference
     private Trip trip;
 
+    public TripDetail() {
+    }
+
     public TripDetail(String name, String description, String dateFrom, String dateTo, double latitude, double longitude, Trip trip) {
         this.name = name;
         this.description = description;
