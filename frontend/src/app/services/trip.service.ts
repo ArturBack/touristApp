@@ -16,7 +16,7 @@ export class TripService {
   getTrips(): Observable<Trip[]> {
     const token: Token = this.userService.getUserToken();
     let params = new HttpParams();
-    params = params.set('userId', '1');
+    params = params.set('userId', token.id.toString());
 
     const url = 'http://localhost:8080/getUserTrips';
     return this.http.get<Trip[]>(url, {params: params});
@@ -34,7 +34,7 @@ export class TripService {
     const token: Token = this.userService.getUserToken();
 
     let params = new HttpParams();
-    params = params.set('userId', '1');
+    params = params.set('userId', token.id.toString());
     params = params.set('name', newTrip.name);
     params = params.set('description', newTrip.description);
     params = params.set('dateFrom', newTrip.dateFrom);

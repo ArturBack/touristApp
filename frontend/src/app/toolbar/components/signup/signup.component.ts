@@ -21,26 +21,16 @@ export class SignupComponent implements OnInit {
       data: {title: this.title}
     });
   }
+
   ngOnInit(): void {
-    if (this.isLoggedIn()) {
-      this.title = 'Logout';
-    }
+  }
+
+  private onButtonClick() {
+    this.openDialog();
   }
 
   private isLoggedIn(): boolean {
     return this.userService.isLoggedIn();
   }
 
-  private onButtonClick() {
-    if (this.isLoggedIn()) {
-      this.logOut();
-    } else {
-      this.openDialog();
-    }
-  }
-
-  private logOut() {
-    this.title = 'Sign up';
-    this.userService.logout();
-  }
 }

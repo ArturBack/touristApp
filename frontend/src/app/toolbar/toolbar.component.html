@@ -1,11 +1,13 @@
 <mat-sidenav-container fullscreen>
   <mat-toolbar color="primary">
-    <button mat-icon-button color="warn" (click)="sidenav.toggle()">
+    <button *ngIf="isLoggedIn()" mat-icon-button color="warn" (click)="sidenav.toggle()">
       <mat-icon svgIcon={{menuIconName}}></mat-icon>
     </button>
     <span class="nav-space"></span>
     <app-signin></app-signin>
     <app-signup></app-signup>
+    <app-logout></app-logout>
+
   </mat-toolbar>
   <mat-sidenav #sidenav opened="false" class="sidenav">
     <mat-list>

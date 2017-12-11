@@ -1,11 +1,12 @@
 export class Token {
 
   private _id: number;
-  private _loginDate: Date;
   private _login: string;
+  private _loginDate: Date;
 
 
-  constructor(id: number, loginDate: Date, login: string) {
+
+  constructor(id: number, login: string , loginDate: Date) {
     this._id = id;
     this._loginDate = loginDate;
     this._login = login;

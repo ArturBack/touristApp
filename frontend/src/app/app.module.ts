@@ -36,6 +36,7 @@ import {UserService} from './services/user.service';
 import {StorageServiceModule} from 'angular-webstorage-service';
 import {Ng2Webstorage} from 'ngx-webstorage';
 import { FormsModule } from '@angular/forms';
+import { LogoutComponent } from './toolbar/components/logout/logout.component';
 
 
 
@@ -56,7 +57,8 @@ import { FormsModule } from '@angular/forms';
     TripDetailsComponent,
     TripDetailsCommentComponent,
     GoogleMapComponent,
-    AddNewCommentComponent
+    AddNewCommentComponent,
+    LogoutComponent
 
   ],
   imports: [

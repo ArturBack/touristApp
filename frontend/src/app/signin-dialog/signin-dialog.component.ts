@@ -1,6 +1,7 @@
 import {Component, Inject, ViewChild} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {UserService} from '../services/user.service';
+import {Token} from '../services/model/token';
 
 @Component({
   selector: 'app-signin-dialog',
@@ -27,11 +28,44 @@ export class SigninDialogComponent {
 
   private onSignIn() {
     console.log(this.emailView.email + ' ' + this.passwordView.password);
-
     if (this.isSignInDialog()) {
-      this.userService.logIn(this.emailView.email, this.passwordView.password);
+      this.login();
     } else {
-      this.userService.register(this.emailView.email, this.passwordView.password);
+      this.register();
     }
+  }
+
+  login() {
+    this.userService.logIn(this.emailView.email, this.passwordView.password)
+      .subscribe(
+        data => {
+          console.log(data);
+          const token = <Token> data;
+          this.onSuccess(token);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+
+  }
+
+  register() {
+    this.userService.register(this.emailView.email, this.passwordView.password)
+      .subscribe(
+        data => {
+          console.log(data);
+          const token = <Token> data;
+          this.onSuccess(token);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
+  onSuccess(token: Token) {
+    this.userService.storeToken(token);
+    this.dialogRef.close();
   }
 }
