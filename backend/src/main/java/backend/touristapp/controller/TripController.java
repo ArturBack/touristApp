@@ -34,13 +34,11 @@ public class TripController {
         this.tripRepository = tripRepository;
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/getUserTrips", method = RequestMethod.GET)
     @ResponseBody
     public Set<Trip> getUserTrips(@RequestParam(value = "userId") long userId) {
-        String tempLogin = "artur.waliczek@gmail.com";
-        Optional<User> userOpt = userRepository.findByLogin(tempLogin);
-        User user = userOpt.orElseGet(() -> userRepository.save(new User(tempLogin, "haslo")));
-
+        User user = userRepository.findOne(userId);
         if (user != null) {
             Set<Trip> trips = user.getTrips();
             if (trips != null) {
@@ -51,6 +49,7 @@ public class TripController {
         return Collections.emptySet();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/addTrip", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, String> addNewTrip(@RequestParam(value = "userId") long userId,

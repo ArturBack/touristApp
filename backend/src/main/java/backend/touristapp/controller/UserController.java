@@ -5,20 +5,14 @@ import backend.touristapp.models.User;
 import backend.touristapp.repository.UserRepository;
 import org.h2.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 import static backend.touristapp.constants.ResponseConstants.FAILED;
 import static backend.touristapp.constants.ResponseConstants.FAILED_ID;
-import static backend.touristapp.constants.ResponseConstants.FAILED_RESPONSE;
 
-@Controller
+@RestController
 public class UserController {
 
     private UserRepository userRepository;
@@ -31,19 +25,23 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @RequestMapping(value = "/addUser", method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE,
-            consumes = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseBody
+
+    @PostMapping("/addUser")
+    @CrossOrigin(origins = "http://localhost:4200")
     public Token addUser(@RequestBody User user) {
         if (StringUtils.isNullOrEmpty(user.getLogin()) || StringUtils.isNullOrEmpty(user.getPassword())) {
             return new Token(FAILED_ID, FAILED);
         }
-        User savedUser = userRepository.save(user);
-        return new Token(savedUser.getId(), savedUser.getLogin());
+        Optional<User> userDB = userRepository.findByLogin(user.getLogin());
+        if(!userDB.isPresent()) {
+            User savedUser = userRepository.save(user);
+            return new Token(savedUser.getId(), savedUser.getLogin());
+        }
+        return new Token(FAILED_ID, FAILED);
     }
 
-    @RequestMapping(value = "/loginInUser", method = RequestMethod.POST)
+    @PostMapping("/logInUser")
+    @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public Token logInUser(@RequestBody User user) {
         if (StringUtils.isNullOrEmpty(user.getLogin()) || StringUtils.isNullOrEmpty(user.getPassword())) {

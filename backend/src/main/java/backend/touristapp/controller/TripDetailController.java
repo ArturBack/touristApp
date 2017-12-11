@@ -6,10 +6,7 @@ import backend.touristapp.repository.TripDetailRepository;
 import backend.touristapp.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.Map;
@@ -32,6 +29,8 @@ public class TripDetailController {
         this.tripDetailRepository = tripDetailRepository;
         this.tripRepository = tripRepository;
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/getTripDetails", method = RequestMethod.GET)
     @ResponseBody
     public Set<TripDetail> getTripDetails(@RequestParam(value = "tripID") long tripID) {
@@ -42,6 +41,7 @@ public class TripDetailController {
         return Collections.emptySet();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @RequestMapping(value = "/addTripDetail", method = RequestMethod.GET)
     @ResponseBody
     public Map<String, String> addNewTrip(@RequestParam(value = "tripId") long tripId,
